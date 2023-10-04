@@ -8,17 +8,45 @@
 
 /* Begin PBXBuildFile section */
 		80B08C332ACD72FE00641575 /* splitApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B08C322ACD72FE00641575 /* splitApp.swift */; };
-		80B08C352ACD72FE00641575 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B08C342ACD72FE00641575 /* ContentView.swift */; };
+		80B08C352ACD72FE00641575 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B08C342ACD72FE00641575 /* MainView.swift */; };
 		80B08C372ACD730200641575 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80B08C362ACD730200641575 /* Assets.xcassets */; };
 		80B08C3A2ACD730200641575 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80B08C392ACD730200641575 /* Preview Assets.xcassets */; };
+		80B08C462ACD751500641575 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B08C452ACD751500641575 /* UserModel.swift */; };
+		80B08C482ACD754000641575 /* ExpenseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B08C472ACD754000641575 /* ExpenseModel.swift */; };
+		80B08C4A2ACD758800641575 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B08C492ACD758800641575 /* LoginView.swift */; };
+		80B08C4C2ACD759600641575 /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B08C4B2ACD759600641575 /* RegisterView.swift */; };
+		80B08C4E2ACD75A600641575 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B08C4D2ACD75A600641575 /* ProfileView.swift */; };
+		80B08C502ACD75B800641575 /* AddExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B08C4F2ACD75B800641575 /* AddExpenseView.swift */; };
+		80B08C522ACD75C700641575 /* AddParticipants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B08C512ACD75C700641575 /* AddParticipants.swift */; };
+		80B08C542ACD75DE00641575 /* SplitBillView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B08C532ACD75DE00641575 /* SplitBillView.swift */; };
+		80B08C562ACD76B200641575 /* LoginViewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B08C552ACD76B200641575 /* LoginViewVM.swift */; };
+		80B08C582ACD76BE00641575 /* RegisterViewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B08C572ACD76BE00641575 /* RegisterViewVM.swift */; };
+		80B08C5A2ACD76CA00641575 /* ProfileViewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B08C592ACD76CA00641575 /* ProfileViewVM.swift */; };
+		80B08C5C2ACD76DE00641575 /* AddExpenseViewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B08C5B2ACD76DE00641575 /* AddExpenseViewVM.swift */; };
+		80B08C5E2ACD76EE00641575 /* AddParticipantViewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B08C5D2ACD76EE00641575 /* AddParticipantViewVM.swift */; };
+		80B08C602ACD777F00641575 /* SplitBillViewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B08C5F2ACD777F00641575 /* SplitBillViewVM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		80B08C2F2ACD72FE00641575 /* split.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = split.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80B08C322ACD72FE00641575 /* splitApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = splitApp.swift; sourceTree = "<group>"; };
-		80B08C342ACD72FE00641575 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		80B08C342ACD72FE00641575 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		80B08C362ACD730200641575 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		80B08C392ACD730200641575 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		80B08C452ACD751500641575 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		80B08C472ACD754000641575 /* ExpenseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseModel.swift; sourceTree = "<group>"; };
+		80B08C492ACD758800641575 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		80B08C4B2ACD759600641575 /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
+		80B08C4D2ACD75A600641575 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		80B08C4F2ACD75B800641575 /* AddExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseView.swift; sourceTree = "<group>"; };
+		80B08C512ACD75C700641575 /* AddParticipants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddParticipants.swift; sourceTree = "<group>"; };
+		80B08C532ACD75DE00641575 /* SplitBillView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitBillView.swift; sourceTree = "<group>"; };
+		80B08C552ACD76B200641575 /* LoginViewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewVM.swift; sourceTree = "<group>"; };
+		80B08C572ACD76BE00641575 /* RegisterViewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewVM.swift; sourceTree = "<group>"; };
+		80B08C592ACD76CA00641575 /* ProfileViewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewVM.swift; sourceTree = "<group>"; };
+		80B08C5B2ACD76DE00641575 /* AddExpenseViewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseViewVM.swift; sourceTree = "<group>"; };
+		80B08C5D2ACD76EE00641575 /* AddParticipantViewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddParticipantViewVM.swift; sourceTree = "<group>"; };
+		80B08C5F2ACD777F00641575 /* SplitBillViewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitBillViewVM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,9 +79,10 @@
 		80B08C312ACD72FE00641575 /* split */ = {
 			isa = PBXGroup;
 			children = (
-				80B08C322ACD72FE00641575 /* splitApp.swift */,
-				80B08C342ACD72FE00641575 /* ContentView.swift */,
-				80B08C362ACD730200641575 /* Assets.xcassets */,
+				80B08C442ACD74FC00641575 /* ViewModels */,
+				80B08C422ACD744900641575 /* Views */,
+				80B08C412ACD743D00641575 /* Models */,
+				80B08C402ACD743300641575 /* Other */,
 				80B08C382ACD730200641575 /* Preview Content */,
 			);
 			path = split;
@@ -65,6 +94,51 @@
 				80B08C392ACD730200641575 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		80B08C402ACD743300641575 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				80B08C322ACD72FE00641575 /* splitApp.swift */,
+				80B08C362ACD730200641575 /* Assets.xcassets */,
+			);
+			path = Other;
+			sourceTree = "<group>";
+		};
+		80B08C412ACD743D00641575 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				80B08C452ACD751500641575 /* UserModel.swift */,
+				80B08C472ACD754000641575 /* ExpenseModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		80B08C422ACD744900641575 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				80B08C342ACD72FE00641575 /* MainView.swift */,
+				80B08C492ACD758800641575 /* LoginView.swift */,
+				80B08C4B2ACD759600641575 /* RegisterView.swift */,
+				80B08C4D2ACD75A600641575 /* ProfileView.swift */,
+				80B08C4F2ACD75B800641575 /* AddExpenseView.swift */,
+				80B08C512ACD75C700641575 /* AddParticipants.swift */,
+				80B08C532ACD75DE00641575 /* SplitBillView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		80B08C442ACD74FC00641575 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				80B08C552ACD76B200641575 /* LoginViewVM.swift */,
+				80B08C572ACD76BE00641575 /* RegisterViewVM.swift */,
+				80B08C592ACD76CA00641575 /* ProfileViewVM.swift */,
+				80B08C5B2ACD76DE00641575 /* AddExpenseViewVM.swift */,
+				80B08C5D2ACD76EE00641575 /* AddParticipantViewVM.swift */,
+				80B08C5F2ACD777F00641575 /* SplitBillViewVM.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +211,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80B08C352ACD72FE00641575 /* ContentView.swift in Sources */,
+				80B08C542ACD75DE00641575 /* SplitBillView.swift in Sources */,
+				80B08C522ACD75C700641575 /* AddParticipants.swift in Sources */,
+				80B08C352ACD72FE00641575 /* MainView.swift in Sources */,
 				80B08C332ACD72FE00641575 /* splitApp.swift in Sources */,
+				80B08C5C2ACD76DE00641575 /* AddExpenseViewVM.swift in Sources */,
+				80B08C562ACD76B200641575 /* LoginViewVM.swift in Sources */,
+				80B08C482ACD754000641575 /* ExpenseModel.swift in Sources */,
+				80B08C582ACD76BE00641575 /* RegisterViewVM.swift in Sources */,
+				80B08C5E2ACD76EE00641575 /* AddParticipantViewVM.swift in Sources */,
+				80B08C502ACD75B800641575 /* AddExpenseView.swift in Sources */,
+				80B08C4C2ACD759600641575 /* RegisterView.swift in Sources */,
+				80B08C4A2ACD758800641575 /* LoginView.swift in Sources */,
+				80B08C4E2ACD75A600641575 /* ProfileView.swift in Sources */,
+				80B08C602ACD777F00641575 /* SplitBillViewVM.swift in Sources */,
+				80B08C5A2ACD76CA00641575 /* ProfileViewVM.swift in Sources */,
+				80B08C462ACD751500641575 /* UserModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
