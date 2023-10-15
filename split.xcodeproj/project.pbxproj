@@ -25,6 +25,7 @@
 		80B08C5C2ACD76DE00641575 /* AddExpenseViewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B08C5B2ACD76DE00641575 /* AddExpenseViewVM.swift */; };
 		80B08C5E2ACD76EE00641575 /* AddParticipantViewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B08C5D2ACD76EE00641575 /* AddParticipantViewVM.swift */; };
 		80B08C602ACD777F00641575 /* SplitBillViewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B08C5F2ACD777F00641575 /* SplitBillViewVM.swift */; };
+		80F7CEA92ADC8E25000C7C08 /* PressStart2P-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 80F7CEA82ADC8E24000C7C08 /* PressStart2P-Regular.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,8 @@
 		80B08C5B2ACD76DE00641575 /* AddExpenseViewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseViewVM.swift; sourceTree = "<group>"; };
 		80B08C5D2ACD76EE00641575 /* AddParticipantViewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddParticipantViewVM.swift; sourceTree = "<group>"; };
 		80B08C5F2ACD777F00641575 /* SplitBillViewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitBillViewVM.swift; sourceTree = "<group>"; };
+		80F7CEA82ADC8E24000C7C08 /* PressStart2P-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PressStart2P-Regular.ttf"; sourceTree = "<group>"; };
+		80F7CEAA2ADC98D0000C7C08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +82,7 @@
 		80B08C312ACD72FE00641575 /* split */ = {
 			isa = PBXGroup;
 			children = (
+				80F7CEAA2ADC98D0000C7C08 /* Info.plist */,
 				80B08C442ACD74FC00641575 /* ViewModels */,
 				80B08C422ACD744900641575 /* Views */,
 				80B08C412ACD743D00641575 /* Models */,
@@ -100,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				80B08C322ACD72FE00641575 /* splitApp.swift */,
+				80F7CEA82ADC8E24000C7C08 /* PressStart2P-Regular.ttf */,
 				80B08C362ACD730200641575 /* Assets.xcassets */,
 			);
 			path = Other;
@@ -199,6 +204,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				80F7CEA92ADC8E25000C7C08 /* PressStart2P-Regular.ttf in Resources */,
 				80B08C3A2ACD730200641575 /* Preview Assets.xcassets in Resources */,
 				80B08C372ACD730200641575 /* Assets.xcassets in Resources */,
 			);
@@ -362,6 +368,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"split/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = split/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -390,6 +397,7 @@
 				DEVELOPMENT_ASSET_PATHS = "\"split/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = split/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
