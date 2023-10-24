@@ -50,8 +50,7 @@ struct CustomButton: View {
 
 
 struct LoginView: View {
-    @State var username = ""
-    @State var password = ""
+    @StateObject var viewModel = LoginViewVM()
     
     
     init() {
@@ -71,15 +70,16 @@ struct LoginView: View {
                 .shadow(color: .black, radius: 2, x: 2,y:3)
             Spacer()
 //            Spacer().frame(height: 50)
-            CustomTextField(textController: $username, text: "Username")
+            CustomTextField(textController: $viewModel.email, text: "Email")
                 .frame(width: UIScreen.main.bounds.width/1.15, height: UIScreen.main.bounds.height/17)
             Spacer().frame(height:20)
-            CustomTextField(textController: $password, text: "Password")
+            CustomTextField(textController: $viewModel.password, text: "Password")
                 .frame(width: UIScreen.main.bounds.width/1.15, height: UIScreen.main.bounds.height/17)
             Spacer().frame(height:80)
             CustomButton(text: "Login")
                 .frame(width: 95.0, height: 30)
                 .onTapGesture {
+                    viewModel.login()
                     print("Login Button Tapped")
                 }
             

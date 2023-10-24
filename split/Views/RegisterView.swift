@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct RegisterView: View {
-        @State var username = ""
-        @State var password = ""
-        @State var name = ""
+        @StateObject var viewModel = RegisterViewVM()
         
         
     //    init() {
@@ -30,19 +28,20 @@ struct RegisterView: View {
                     .shadow(color: .black, radius: 4, x: 2,y:3)
                 Spacer()
     //            Spacer().frame(height: 50)
-                CustomTextField(textController: $name, text: "Name")
+                CustomTextField(textController: $viewModel.name, text: "Name")
                     .frame(width: UIScreen.main.bounds.width/1.15, height: UIScreen.main.bounds.height/17)
                 Spacer().frame(height:20)
-                CustomTextField(textController: $username, text: "Username")
+                CustomTextField(textController: $viewModel.email, text: "Email")
                     .frame(width: UIScreen.main.bounds.width/1.15, height: UIScreen.main.bounds.height/17)
                 Spacer().frame(height:20)
-                CustomTextField(textController: $password, text: "Password")
+                CustomTextField(textController: $viewModel.password, text: "Password")
                     .frame(width: UIScreen.main.bounds.width/1.15, height: UIScreen.main.bounds.height/17)
                 Spacer().frame(height:80)
                 CustomButton(text: "Register")
                     .frame(width:UIScreen.main.bounds.width/3.5,height: 30)
                     .onTapGesture {
-                        print("Login Button Tapped")
+                        viewModel.register()
+                        print("register Button Tapped")
                     }
                 
                 Spacer()
