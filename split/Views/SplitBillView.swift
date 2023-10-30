@@ -42,7 +42,7 @@ struct SliderBar: View {
 
 
 struct PaymentInfoCard: View {
-    @State var value = 25.0
+    @Binding var value: Double
     var body: some View {
         ZStack(alignment: .topLeading){
             RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
@@ -106,9 +106,17 @@ struct SwipeToBar:View {
     }
 }
 
+// make a single state variable add all the perecentages to the the same variable
+// the final variable should be checked, if it equals to 100%, we proceed with the flow
+// else a warning message/dialog shows that informs the user
+
 
 struct SplitBillView: View {
-    var body: some View {
+    //@state ArraySliders: [particpantds +1]
+    @State var arrayValues = [0.0,0.0,0.0]
+        var body: some View {
+            @State var sum = arrayValues.reduce(0, +)
+
             VStack(alignment: .leading, spacing: 5){
                 Spacer()
                 CircularShadowButton(icon: "chevron.backward")
@@ -124,15 +132,19 @@ struct SplitBillView: View {
                         .font(.system(size: 25))
                 }
                 
-                Text("Splitting by %")
+                Text("\(sum)")
                     .font(.system(size: 20))
                     .padding([.horizontal], 10)
                 
                 Spacer().frame(height: 10)
                 VStack{
-                    PaymentInfoCard()
-                    PaymentInfoCard()
-                    PaymentInfoCard()
+                    
+                    ForEach(arrayValues.indices, id: \.self){index in
+                        PaymentInfoCard(value: $arrayValues[index])
+                    }
+//                    PaymentInfoCard(value: $totalValue)
+//                    PaymentInfoCard(value: $totalValue1)
+//                    PaymentInfoCard(value: $totalValue2)
                 }
                 
                 
