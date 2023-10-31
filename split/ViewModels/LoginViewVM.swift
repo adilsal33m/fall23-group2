@@ -11,9 +11,10 @@ class LoginViewVM: ObservableObject {
     @Published var email = ""
     @Published var password = ""
     
-    init(){
-        FirebaseApp.configure()
-    }
+    
+//    init(){
+//        FirebaseApp.configure()
+//    }
     
     func login(){
         guard validate() else {
@@ -36,6 +37,7 @@ class LoginViewVM: ObservableObject {
         
     }
     
+        
     func validate () -> Bool{
         guard !email.trimmingCharacters(in: .whitespaces).isEmpty, !password.trimmingCharacters(in: .whitespaces).isEmpty else{
             print("theree is some error")

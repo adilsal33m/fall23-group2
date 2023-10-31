@@ -41,6 +41,7 @@ struct RegisterView: View {
                     .frame(width:UIScreen.main.bounds.width/3.5,height: 30)
                     .onTapGesture {
                         viewModel.register()
+                        viewModel.addUser()
                         print("register Button Tapped")
                     }
                 

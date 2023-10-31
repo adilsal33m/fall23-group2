@@ -7,15 +7,19 @@
 
 import Foundation
 import Firebase
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 class RegisterViewVM: ObservableObject{
     @Published var name = ""
     @Published var email = ""
     @Published var password = ""
+    let db = Firestore.firestore()
     
-    init(){
-        FirebaseApp.configure()
-    }
+        
+//    init(){
+//        FirebaseApp.configure()
+//    }
     
     func register () {
         Auth.auth().createUser(withEmail: email, password: password) {result, error in
@@ -24,4 +28,15 @@ class RegisterViewVM: ObservableObject{
             }
         }
     }
+    
+    func addUser() {
+        var user = User(id: UUID(), email: email, name: name)
+
+        do {
+            _ = try db.collection("Users").document(user.id.uuidString).setData(from: user)
+        } catch let error {
+            print("Error writing user to Firestore: \(error)")
+        }
+    }
+
 }
