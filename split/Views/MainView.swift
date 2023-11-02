@@ -79,7 +79,7 @@ struct AddFriendsCard: View {
                 }
                 Spacer()
                     .padding()
-                NavigationLink("", destination: ProfileView())
+                //NavigationLink("", destination: ProfileView())
             }.onTapGesture {
               // enter code here
             }
@@ -91,7 +91,6 @@ struct AddFriendsCard: View {
 
 struct MainView: View {
     
-    @StateObject var viewModel = RegisterViewVM()
     var body: some View {
         VStack(alignment: .leading, spacing: 5){
             
@@ -118,8 +117,6 @@ struct MainView: View {
                 AddExpenseCard()
                 AddFriendsCard()
             }
-            
- 
             
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
