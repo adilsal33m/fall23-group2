@@ -80,18 +80,21 @@ struct LoginView: View {
                 .onTapGesture {
                     viewModel.login()
                     print("Login Button Tapped")
+                
                 }
             
             Spacer()
-            
-            Text("Create Your Account")
-                .padding(.all, 30)
-                .bold()
-                .font(.system(size: 20))
-                .shadow(color: .black, radius: 1, x: 1,y: 1)
-                .onTapGesture {
-                    print("Create Button Tapped")
-                }
+            NavigationStack{
+                Text("Create Your Account")
+                    .padding(.all, 30)
+                    .bold()
+                    .font(.system(size: 20))
+                    .shadow(color: .black, radius: 1, x: 1,y: 1)
+                    .onTapGesture {
+                        print("Create Button Tapped")
+                       // NavigationLink( destination: RegisterView())
+                    }
+            }
         }
     }
 }

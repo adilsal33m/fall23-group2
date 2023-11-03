@@ -54,6 +54,7 @@
 		80B08C5E2ACD76EE00641575 /* AddParticipantViewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B08C5D2ACD76EE00641575 /* AddParticipantViewVM.swift */; };
 		80B08C602ACD777F00641575 /* SplitBillViewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B08C5F2ACD777F00641575 /* SplitBillViewVM.swift */; };
 		80F7CEA92ADC8E25000C7C08 /* PressStart2P-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 80F7CEA82ADC8E24000C7C08 /* PressStart2P-Regular.ttf */; };
+		BFF8BF9F2AF4DD8F008D53A2 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8BF9E2AF4DD8F008D53A2 /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +80,7 @@
 		80B08C5F2ACD777F00641575 /* SplitBillViewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitBillViewVM.swift; sourceTree = "<group>"; };
 		80F7CEA82ADC8E24000C7C08 /* PressStart2P-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PressStart2P-Regular.ttf"; sourceTree = "<group>"; };
 		80F7CEAA2ADC98D0000C7C08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BFF8BF9E2AF4DD8F008D53A2 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +188,7 @@
 				80B08C4F2ACD75B800641575 /* AddExpenseView.swift */,
 				80B08C512ACD75C700641575 /* AddParticipants.swift */,
 				80B08C532ACD75DE00641575 /* SplitBillView.swift */,
+				BFF8BF9E2AF4DD8F008D53A2 /* HomeView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				80B08C352ACD72FE00641575 /* MainView.swift in Sources */,
 				80B08C332ACD72FE00641575 /* splitApp.swift in Sources */,
 				80B08C5C2ACD76DE00641575 /* AddExpenseViewVM.swift in Sources */,
+				BFF8BF9F2AF4DD8F008D53A2 /* HomeView.swift in Sources */,
 				80B08C562ACD76B200641575 /* LoginViewVM.swift in Sources */,
 				80B08C482ACD754000641575 /* ExpenseModel.swift in Sources */,
 				80B08C582ACD76BE00641575 /* RegisterViewVM.swift in Sources */,
@@ -456,6 +460,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"split/Preview Content\"";
+				DEVELOPMENT_TEAM = BR85YBCV5S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = split/Info.plist;
@@ -485,6 +490,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"split/Preview Content\"";
+				DEVELOPMENT_TEAM = BR85YBCV5S;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = split/Info.plist;

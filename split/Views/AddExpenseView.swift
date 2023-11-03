@@ -42,7 +42,7 @@ struct CustomPerson: View {
                     Image(systemName: "person.fill")
                 )
             .overlay(Circle().stroke(Color.black, lineWidth: 2))
-            Text(Name).fontWeight(.medium).multilineTextAlignment(.center).lineLimit(2)
+            Text(Name).frame(width:50).fontWeight(.medium).multilineTextAlignment(.center).lineLimit(2)
         }
     }
     
@@ -82,23 +82,29 @@ struct AddExpenseView: View {
                     .font(.system(size: 25))
                 Spacer()
             }
+            
             CustomTextField(textController: $viewModel.BillDesc, text: "Bill Description")
-                .frame(width: UIScreen.main.bounds.width/1.15, height: UIScreen.main.bounds.height/17)
+                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/17)//.padding(.horizontal,30)
+            
             Spacer().frame(height:5)
+            
             HStack {
                 Text("Total Bill").font(.title2).lineLimit(1).fontWeight(.bold)
-                Spacer().frame(width:55)
+                Spacer()//.frame(width:55)
                 CustomNumberField(textController: $viewModel.totalString, text: "Rs. 00.00")
                     .frame(width: UIScreen.main.bounds.width/2, height: UIScreen.main.bounds.height/17).frame( alignment: .topTrailing)
             }
+            
             Spacer().frame(height:1)
+            
             Divider().frame(height:3).overlay(.black)
+            
             //Spacer().frame(height:1)
             Text("Split With:").font(.title2).lineLimit(1).fontWeight(.bold)
             //Spacer().frame(height:1)
             HStack(alignment: .top, spacing:15){
                 CustomPerson(Name:"You")
-                CustomPerson(Name:"Friend 1")
+                CustomPerson(Name:"Friend Name")
                 CustomPerson(Name:"Friend 2")
                 //CustomPerson(Name:"Friend's Name")
                 CustomAddPersonButton()
@@ -114,7 +120,7 @@ struct AddExpenseView: View {
             CustomButton(text: "Split Now").frame(height:50)
         }
         .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-        .padding()
+        .padding(.horizontal)
     }
 }
 
