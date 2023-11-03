@@ -10,7 +10,6 @@ import SwiftUI
 struct CustomTextField: View {
     @Binding var textController: String
     var text: String
-    
     var body: some View {
         ZStack(alignment: .trailing) {
             RoundedRectangle(cornerRadius: 8)

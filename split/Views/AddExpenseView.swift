@@ -7,17 +7,16 @@
 
 import SwiftUI
 
-struct CustomTextField2: View{
+struct CustomNumberField: View{
     @Binding var textController: String
     var text: String
-    var formatter: NumberFormatter
     var body: some View {
         ZStack(alignment: .topTrailing) {
             RoundedRectangle(cornerRadius: 8)
                 .foregroundColor(Color.white)
                 .shadow(color: Color.black.opacity(1), radius: 0, x: 6, y: 6)
-            
-            TextField(text, text: $textController)
+
+            TextField(text, text: $textController).keyboardType(.decimalPad)
                 .padding(EdgeInsets(top: 8, leading: 16, bottom: 10, trailing: 16))
                 .font(.largeTitle).bold()
                 .background(
@@ -70,19 +69,11 @@ struct CustomAddPersonButton: View{
 }
 
 struct AddExpenseView: View {
-    @State private var total = 0
-    
-    let ConvertToNumber: NumberFormatter = {
-            let formatter = NumberFormatter()
-        formatter.numberStyle = .decimal
-            return formatter
-    }()
-
-    @State var BillDesc: String = ""
+    @StateObject var viewModel = AddExpenseViewVM()
     var body: some View {
         VStack(alignment: .leading, spacing: 20){
             //Spacer().frame(height:10)
-
+            
             HStack{
                 CircularShadowButton(icon: "chevron.backward")
                 Spacer()
@@ -91,19 +82,18 @@ struct AddExpenseView: View {
                     .font(.system(size: 25))
                 Spacer()
             }
-            
-            CustomTextField(textController: $BillDesc, text: "Bill Description")
+            CustomTextField(textController: $viewModel.BillDesc, text: "Bill Description")
                 .frame(width: UIScreen.main.bounds.width/1.15, height: UIScreen.main.bounds.height/17)
             Spacer().frame(height:5)
             HStack {
                 Text("Total Bill").font(.title2).lineLimit(1).fontWeight(.bold)
                 Spacer().frame(width:55)
-                CustomTextField2(textController: $BillDesc, text: "Rs. 00.00", formatter: ConvertToNumber)
-                    .frame(width: UIScreen.main.bounds.width/2, height: UIScreen.main.bounds.height/17)
+                CustomNumberField(textController: $viewModel.totalString, text: "Rs. 00.00")
+                    .frame(width: UIScreen.main.bounds.width/2, height: UIScreen.main.bounds.height/17).frame( alignment: .topTrailing)
             }
             Spacer().frame(height:1)
             Divider().frame(height:3).overlay(.black)
-            Spacer().frame(height:1)
+            //Spacer().frame(height:1)
             Text("Split With:").font(.title2).lineLimit(1).fontWeight(.bold)
             //Spacer().frame(height:1)
             HStack(alignment: .top, spacing:15){
