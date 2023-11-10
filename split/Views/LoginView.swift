@@ -10,7 +10,6 @@ import SwiftUI
 struct CustomTextField: View {
     @Binding var textController: String
     var text: String
-    
     var body: some View {
         ZStack(alignment: .trailing) {
             RoundedRectangle(cornerRadius: 8)
@@ -32,14 +31,14 @@ struct CustomButton: View {
     var text:String
     
     var body: some View {
-        ZStack(alignment: .trailing) {
+        ZStack(alignment: .center) {
             RoundedRectangle(cornerRadius: 8)
                 .foregroundColor(Color.white)
                 .shadow(color: Color.black.opacity(1), radius: 0, x: 5, y: 5)
             
             Text(text)
                 .padding(EdgeInsets(top: 8, leading: 16, bottom: 10, trailing: 16))
-                .font(Font.system(size: 22, design: .default))
+                .font(Font.system(size: 22, design: .default)).bold()
                 .background(
                     RoundedRectangle(cornerRadius: 8)
                         .stroke(Color.black, lineWidth: 0)
@@ -81,18 +80,21 @@ struct LoginView: View {
                 .onTapGesture {
                     viewModel.login()
                     print("Login Button Tapped")
+                
                 }
             
             Spacer()
-            
-            Text("Create Your Account")
-                .padding(.all, 30)
-                .bold()
-                .font(.system(size: 20))
-                .shadow(color: .black, radius: 1, x: 1,y: 1)
-                .onTapGesture {
-                    print("Create Button Tapped")
-                }
+            NavigationStack{
+                Text("Create Your Account")
+                    .padding(.all, 30)
+                    .bold()
+                    .font(.system(size: 20))
+                    .shadow(color: .black, radius: 1, x: 1,y: 1)
+                    .onTapGesture {
+                        print("Create Button Tapped")
+                       // NavigationLink( destination: RegisterView())
+                    }
+            }
         }
     }
 }

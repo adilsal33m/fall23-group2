@@ -30,7 +30,7 @@ class RegisterViewVM: ObservableObject{
     }
     
     func addUser() {
-        var user = User(id: UUID(), email: email, name: name)
+        let user = User(id: UUID(), email: email, name: name)
 
         do {
             _ = try db.collection("Users").document(user.id.uuidString).setData(from: user)

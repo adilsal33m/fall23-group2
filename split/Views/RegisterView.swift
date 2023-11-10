@@ -38,7 +38,7 @@ struct RegisterView: View {
                     .frame(width: UIScreen.main.bounds.width/1.15, height: UIScreen.main.bounds.height/17)
                 Spacer().frame(height:80)
                 CustomButton(text: "Register")
-                    .frame(width:UIScreen.main.bounds.width/3.5,height: 30)
+                    .frame(width:UIScreen.main.bounds.width/3.2,height: 30)
                     .onTapGesture {
                         viewModel.register()
                         viewModel.addUser()
