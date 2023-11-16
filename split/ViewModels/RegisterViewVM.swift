@@ -21,10 +21,23 @@ class RegisterViewVM: ObservableObject{
 //        FirebaseApp.configure()
 //    }
     
-    func register () {
-        Auth.auth().createUser(withEmail: email, password: password) {result, error in
-            if error != nil{
-                print("there is some error")
+//    func register () {
+//        Auth.auth().createUser(withEmail: email, password: password) {result, error in
+//            if error != nil{
+//                print("there is some error")
+//            }
+//        }
+//    }
+    
+    
+    func register(completion: @escaping (Bool) -> Void) {
+        Auth.auth().createUser(withEmail: email, password: password) { result, error in
+            if let error = error {
+                print("Error during registration: \(error.localizedDescription)")
+                completion(false)
+            } else {
+                // Registration successful
+                completion(true)
             }
         }
     }

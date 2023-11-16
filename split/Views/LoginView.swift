@@ -52,15 +52,15 @@ struct LoginView: View {
     @StateObject var viewModel = LoginViewVM()
     
     
-    init() {
-        for family in UIFont.familyNames{
-            print(family)
-            for font in UIFont.fontNames(forFamilyName: family){
-                print(font)
-            }
-        }
-    }
-    
+//    init() {
+//        for family in UIFont.familyNames{
+//            print(family)
+//            for font in UIFont.fontNames(forFamilyName: family){
+//                print(font)
+//            }
+//        }
+//    }
+//    
     var body: some View {
         VStack{
             Spacer()
@@ -84,18 +84,22 @@ struct LoginView: View {
                 }
             
             Spacer()
-            NavigationStack{
+            
+            NavigationLink(destination: RegisterView(), label: {
+                
                 Text("Create Your Account")
                     .padding(.all, 30)
                     .bold()
                     .font(.system(size: 20))
                     .shadow(color: .black, radius: 1, x: 1,y: 1)
-                    .onTapGesture {
-                        print("Create Button Tapped")
-                       // NavigationLink( destination: RegisterView())
-                    }
+                    
+            })
+            .foregroundColor(.black)
+            NavigationStack{
+                
             }
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
