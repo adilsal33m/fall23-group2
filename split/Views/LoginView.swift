@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import GoogleSignIn
+import GoogleSignInSwift
 
 struct CustomTextField: View {
     @Binding var textController: String
@@ -74,7 +76,14 @@ struct LoginView: View {
             Spacer().frame(height:20)
             CustomTextField(textController: $viewModel.password, text: "Password")
                 .frame(width: UIScreen.main.bounds.width/1.15, height: UIScreen.main.bounds.height/17)
-            Spacer().frame(height:80)
+            Spacer().frame(height:30)
+
+            GoogleSignInButton(viewModel: GoogleSignInButtonViewModel(scheme: .dark, style: .icon, state: .normal), action:{
+                Task{
+                    try await viewModel.signInGoogle()
+                }
+            })
+            Spacer().frame(height:30)
             CustomButton(text: "Login")
                 .frame(width: 95.0, height: 30)
                 .onTapGesture {
@@ -95,9 +104,6 @@ struct LoginView: View {
                     
             })
             .foregroundColor(.black)
-            NavigationStack{
-                
-            }
         }
         .navigationBarBackButtonHidden(true)
     }

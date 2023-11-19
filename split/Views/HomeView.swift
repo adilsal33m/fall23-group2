@@ -7,6 +7,8 @@
 
 
 import SwiftUI
+import Firebase
+import FirebaseAuth
 
 struct NavigationCard: View {
     var text: String
@@ -47,7 +49,7 @@ struct HomeView: View {
             Spacer().frame(height:10)
             
             HStack{
-                Text("Hello, Username!")
+                Text("Hello, Username")
                     .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                     .font(.system(size: 25))
                 Spacer()
