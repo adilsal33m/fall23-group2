@@ -47,7 +47,9 @@ struct SliderBar: View {
 
 struct PaymentInfoCard: View {
     @Binding var value: Double
+    @State var amount: Int = 0
     var body: some View {
+
         ZStack(alignment: .topLeading){
             RoundedRectangle(cornerRadius: /*@START_MENU_TOKEN@*/25.0/*@END_MENU_TOKEN@*/)
                 .foregroundColor(.white)
@@ -66,7 +68,7 @@ struct PaymentInfoCard: View {
                         .overlay(Circle().stroke(Color.black, lineWidth: 2))
                     
                     VStack(alignment:.leading, spacing: 5){
-                        Text("Zawiyar will pay")
+                        Text("Zawiyar pay's")
                             .font(.system(size: 20))
                         Text(String(format: "%.0f%%", value))
                             .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
@@ -74,10 +76,13 @@ struct PaymentInfoCard: View {
                     }
                     
                     Spacer()
-                    Text("Rs. 1000")
+                    Text("\(amount)")
                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                         .font(.system(size: 20))
-                }
+                        .onReceive([amount].publisher, perform: { _ in
+                            amount = Int((value/100) * 4000)
+                        })
+                                        }
                 SliderBar(Value: $value)
             }
             .padding()
@@ -151,10 +156,9 @@ struct SwipeToBar:View {
 
 struct SplitBillView: View {
     //@state ArraySliders: [particpantds +1]
-    @State var arrayValues = [0.0,0.0,0.0]
-        var body: some View {
-            @State var sum = arrayValues.reduce(0, +)
-
+    @State var arrayValues = [0.0,0.0,0.0,0.0,0.0]
+    var body: some View {
+        @State var sum = arrayValues.reduce(0, +)
             VStack(alignment: .leading, spacing: 5){
                 Spacer()
                 CircularShadowButton(icon: "chevron.backward")
@@ -175,28 +179,34 @@ struct SplitBillView: View {
                     .padding([.horizontal], 10)
                 
                 Spacer().frame(height: 10)
-                VStack{
-                    
-                    ForEach(arrayValues.indices, id: \.self){index in
-                        PaymentInfoCard(value: $arrayValues[index])
+                ScrollView{
+                    VStack{
+                        
+                        ForEach(arrayValues.indices, id: \.self){index in
+                            PaymentInfoCard(value: $arrayValues[index])
+                        }
+                        //                    PaymentInfoCard(value: $totalValue)
+                        //                    PaymentInfoCard(value: $totalValue1)
+                        //                    PaymentInfoCard(value: $totalValue2)
                     }
-//                    PaymentInfoCard(value: $totalValue)
-//                    PaymentInfoCard(value: $totalValue1)
-//                    PaymentInfoCard(value: $totalValue2)
+                    .padding(.horizontal,6)
                 }
                 
                 
                 
                 
+                
+                Spacer()
                 SwipeToBar()
-                    .padding(.bottom, 50)
+                    .padding(.bottom, 30)
                 
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
             .padding()
-    
+            .ignoresSafeArea()
+            
+        }
     }
-}
 
 #Preview {
     SplitBillView()

@@ -57,6 +57,7 @@
 		80B08C5E2ACD76EE00641575 /* AddParticipantViewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B08C5D2ACD76EE00641575 /* AddParticipantViewVM.swift */; };
 		80B08C602ACD777F00641575 /* SplitBillViewVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80B08C5F2ACD777F00641575 /* SplitBillViewVM.swift */; };
 		80F7CEA92ADC8E25000C7C08 /* PressStart2P-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 80F7CEA82ADC8E24000C7C08 /* PressStart2P-Regular.ttf */; };
+		80F8318D2B1604B800F92FF9 /* FriendsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80F8318C2B1604B800F92FF9 /* FriendsModel.swift */; };
 		BFF8BF9F2AF4DD8F008D53A2 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFF8BF9E2AF4DD8F008D53A2 /* HomeView.swift */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +85,7 @@
 		80B08C5F2ACD777F00641575 /* SplitBillViewVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitBillViewVM.swift; sourceTree = "<group>"; };
 		80F7CEA82ADC8E24000C7C08 /* PressStart2P-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PressStart2P-Regular.ttf"; sourceTree = "<group>"; };
 		80F7CEAA2ADC98D0000C7C08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		80F8318C2B1604B800F92FF9 /* FriendsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsModel.swift; sourceTree = "<group>"; };
 		BFF8BF9E2AF4DD8F008D53A2 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -189,6 +191,7 @@
 			children = (
 				80B08C452ACD751500641575 /* UserModel.swift */,
 				80B08C472ACD754000641575 /* ExpenseModel.swift */,
+				80F8318C2B1604B800F92FF9 /* FriendsModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -341,6 +344,7 @@
 				80B08C5E2ACD76EE00641575 /* AddParticipantViewVM.swift in Sources */,
 				80B08C502ACD75B800641575 /* AddExpenseView.swift in Sources */,
 				80B08C4C2ACD759600641575 /* RegisterView.swift in Sources */,
+				80F8318D2B1604B800F92FF9 /* FriendsModel.swift in Sources */,
 				80B08C4A2ACD758800641575 /* LoginView.swift in Sources */,
 				80B08C4E2ACD75A600641575 /* ProfileView.swift in Sources */,
 				80B08C602ACD777F00641575 /* SplitBillViewVM.swift in Sources */,

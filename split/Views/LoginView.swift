@@ -78,11 +78,13 @@ struct LoginView: View {
                 .frame(width: UIScreen.main.bounds.width/1.15, height: UIScreen.main.bounds.height/17)
             Spacer().frame(height:30)
 
-            GoogleSignInButton(viewModel: GoogleSignInButtonViewModel(scheme: .dark, style: .icon, state: .normal), action:{
+            GoogleSignInButton(viewModel: GoogleSignInButtonViewModel(scheme: .light, style: .icon, state: .normal), action:{
                 Task{
                     try await viewModel.signInGoogle()
                 }
             })
+            .cornerRadius(6)
+            .shadow(color: Color.black.opacity(1), radius: 0, x: 3, y: 3)
             Spacer().frame(height:30)
             CustomButton(text: "Login")
                 .frame(width: 95.0, height: 30)
