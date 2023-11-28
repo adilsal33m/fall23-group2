@@ -94,13 +94,28 @@ struct PaymentInfoCard: View {
 
 
 struct SwipeToBar:View {
+    func dragEnded(){
+        print("drag ended function fired")
+        self.isNavigationActive = true
+        print(isNavigationActive)
+    }
+    @StateObject var vmSplit = SplitBillViewVM()
+    @State private var isNavigationActive = false
     @State var offset: CGSize = .zero
     @State private var isAnimating = false
     let screenWidth = UIScreen.main.bounds.width
     var body: some View {
 //        Text("\(offset.width)")
         let color = Color(red: offset.width < 80 ? 1 : 0, green: offset.width < 80 ? 1 : Double((offset.width + screenWidth/2) / screenWidth), blue: offset.width < 80 ? 1 : 0)
-
+        
+        
+        NavigationLink(
+            destination: HomeView(),
+            isActive: $isNavigationActive
+        ) {
+            EmptyView()
+        }
+        .hidden()
         
         ZStack(alignment: .leading){
             Capsule()
@@ -124,7 +139,11 @@ struct SwipeToBar:View {
                             }
                             .onEnded{ value in
                                 withAnimation(.smooth()){
-                                    offset = .zero                                }
+                                    offset = .zero
+                                    vmSplit.createExpenseEntry()
+                                    self.isNavigationActive = true
+//                                    dragEnded()
+                                }
                                 
                             }
                     )
@@ -206,7 +225,8 @@ struct SplitBillView: View {
             .ignoresSafeArea()
             
         }
-    }
+    
+        }
 
 #Preview {
     SplitBillView()
