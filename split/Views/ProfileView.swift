@@ -75,7 +75,7 @@ struct ProfileView: View {
                     CircularShadowButton(icon: "person.fill")
                 }
                 Text("List of Expenses")
-                    .font(/@START_MENU_TOKEN@/.title/@END_MENU_TOKEN@/)
+                    .font(.title)
                     .bold()
                 
                 HStack{
