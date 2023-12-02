@@ -51,7 +51,7 @@ struct AddParticipants: View {
             HStack{
                 Text("Add Participants")
                     .bold()
-                    .font(/@START_MENU_TOKEN@/.title/@END_MENU_TOKEN@/)
+                    .font(.title)
                 Spacer()
                 Text("Done")
                     .bold()
