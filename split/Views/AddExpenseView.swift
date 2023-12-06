@@ -31,6 +31,7 @@ struct CustomNumberField: View{
 
 struct CustomPerson: View {
     var Name: String
+    @State var isSelected = false
     var body: some View {
         VStack {
             Circle()
@@ -39,10 +40,17 @@ struct CustomPerson: View {
                 .frame(width:50)
                 .foregroundColor(.white)
                 .overlay(
-                    Image(systemName: "person.fill")
+                    isSelected ? Image(systemName:"checkmark.circle.fill"):Image(systemName: "person.fill")
                 )
             .overlay(Circle().stroke(Color.black, lineWidth: 2))
             Text(Name).frame(width:50).fontWeight(.medium).multilineTextAlignment(.center).lineLimit(2)
+        }
+        .onTapGesture {
+            if (isSelected == false){
+                isSelected = true
+            }else{
+                isSelected = false
+            }
         }
     }
     
@@ -69,6 +77,7 @@ struct CustomAddPersonButton: View{
 }
 
 struct AddExpenseView: View {
+    @State var friend_selected = []
     @StateObject var viewModel = AddExpenseViewVM()
     var body: some View {
         VStack(alignment: .leading, spacing: 20){
@@ -78,7 +87,7 @@ struct AddExpenseView: View {
                 CircularShadowButton(icon: "chevron.backward")
                 Spacer()
                 Text("Add Expense")
-                    .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                    .fontWeight(.bold)
                     .font(.system(size: 25))
                 Spacer()
             }
@@ -103,11 +112,21 @@ struct AddExpenseView: View {
             Text("Split With:").font(.title2).lineLimit(1).fontWeight(.bold)
             //Spacer().frame(height:1)
             HStack(alignment: .top, spacing:15){
-                CustomPerson(Name:"You")
-                CustomPerson(Name:"Friend Name")
-                CustomPerson(Name:"Friend 2")
+                
+                ForEach(viewModel.users, id: \.id){ user in
+                    CustomPerson(Name: user.name)
+                        .onTapGesture {
+                            
+                        }
+                }
+//                CustomPerson(Name:"You")
+//                CustomPerson(Name:"Friend Name")
+//                CustomPerson(Name:"Friend 2")
                 //CustomPerson(Name:"Friend's Name")
                 CustomAddPersonButton()
+            }
+            .onAppear{
+                viewModel.fetchUsers()
             }
             Spacer()
             Text("Paid by:").font(.title2).lineLimit(1).fontWeight(.bold)
@@ -123,8 +142,7 @@ struct AddExpenseView: View {
         .padding(.horizontal)
     }
 }
-
+            
 #Preview {
     AddExpenseView()
 }
-
