@@ -57,7 +57,9 @@ struct CustomPerson: View {
 }
 
 struct CustomAddPersonButton: View{
+    
     var body: some View {
+        
         VStack{
             Circle()
                 //.fixedSize()
@@ -77,72 +79,91 @@ struct CustomAddPersonButton: View{
 }
 
 struct AddExpenseView: View {
+    @EnvironmentObject var viewModel: AddExpenseViewVM
     @State var friend_selected = []
-    @StateObject var viewModel = AddExpenseViewVM()
+//    @StateObject var viewModel = AddExpenseViewVM()
+//    @EnvironmentObject var PviewModel: AddParticipantViewVM
     var body: some View {
-        VStack(alignment: .leading, spacing: 20){
-            //Spacer().frame(height:10)
-            
-            HStack{
-                CircularShadowButton(icon: "chevron.backward")
-                Spacer()
-                Text("Add Expense")
-                    .fontWeight(.bold)
-                    .font(.system(size: 25))
-                Spacer()
-            }
-            
-            CustomTextField(textController: $viewModel.BillDesc, text: "Bill Description")
-                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/17)//.padding(.horizontal,30)
-            
-            Spacer().frame(height:5)
-            
-            HStack {
-                Text("Total Bill").font(.title2).lineLimit(1).fontWeight(.bold)
-                Spacer()//.frame(width:55)
-                CustomNumberField(textController: $viewModel.totalString, text: "Rs. 00.00")
-                    .frame(width: UIScreen.main.bounds.width/2, height: UIScreen.main.bounds.height/17).frame( alignment: .topTrailing)
-            }
-            
-            Spacer().frame(height:1)
-            
-            Divider().frame(height:3).overlay(.black)
-            
-            //Spacer().frame(height:1)
-            Text("Split With:").font(.title2).lineLimit(1).fontWeight(.bold)
-            //Spacer().frame(height:1)
-            HStack(alignment: .top, spacing:15){
+        NavigationView{
+            VStack(alignment: .leading, spacing: 20){
+                //Spacer().frame(height:10)
                 
-                ForEach(viewModel.users, id: \.id){ user in
-                    CustomPerson(Name: user.name)
-                        .onTapGesture {
-                            
-                        }
+                HStack{
+                    NavigationLink(destination: HomeView(), label: {
+                        CircularShadowButton(icon: "chevron.backward")
+                    })
+                    
+                    Spacer()
+                    Text("Add Expense")
+                        .fontWeight(.bold)
+                        .font(.system(size: 25))
+                    Spacer()
                 }
-//                CustomPerson(Name:"You")
-//                CustomPerson(Name:"Friend Name")
-//                CustomPerson(Name:"Friend 2")
-                //CustomPerson(Name:"Friend's Name")
-                CustomAddPersonButton()
+                
+                CustomTextField(textController: $viewModel.BillDesc, text: "Bill Description")
+                    .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height/17)//.padding(.horizontal,30)
+                
+                Spacer().frame(height:5)
+                
+                HStack {
+                    Text("Total Bill").font(.title2).lineLimit(1).fontWeight(.bold)
+                    Spacer()//.frame(width:55)
+                    CustomNumberField(textController: $viewModel.totalString, text: "Rs. 00.00")
+                        .frame(width: UIScreen.main.bounds.width/2, height: UIScreen.main.bounds.height/17).frame( alignment: .topTrailing)
+                }
+                
+                Spacer().frame(height:1)
+                
+                Divider().frame(height:3).overlay(.black)
+                
+                //Spacer().frame(height:1)
+                NavigationLink(destination: AddParticipants(), label: {
+                    Text("Split With:").font(.title2).lineLimit(1).fontWeight(.bold)
+                })
+                .foregroundColor(.black)
+                
+                //Spacer().frame(height:1)
+                ScrollView(.horizontal){
+                    HStack(alignment: .top, spacing:15){
+                        
+                        ForEach(viewModel.users, id: \.id){ user in
+                            CustomPerson(Name: user.name)
+                                .onTapGesture {
+                                    
+                                }
+                        }
+                    }
+                    //                CustomPerson(Name:"You")
+                    //                CustomPerson(Name:"Friend Name")
+                    //                CustomPerson(Name:"Friend 2")
+                    //CustomPerson(Name:"Friend's Name")
+                    CustomAddPersonButton()
+                }
+                .onAppear{
+                    viewModel.fetchUsers()
+                }
+                Spacer()
+                Text("Paid by:").font(.title2).lineLimit(1).fontWeight(.bold)
+                HStack(alignment: .top, spacing:15){
+                    CustomPerson(Name:"You")
+                    CustomPerson(Name:"Friend 1")
+                    CustomPerson(Name:"Friend 2")
+                }
+                Spacer()
+                NavigationLink(destination: AddParticipants(), label: {
+                    CustomButton(text: "Split Now").frame(height:50)
+                })
+                .foregroundColor(.black)
+                
             }
-            .onAppear{
-                viewModel.fetchUsers()
-            }
-            Spacer()
-            Text("Paid by:").font(.title2).lineLimit(1).fontWeight(.bold)
-            HStack(alignment: .top, spacing:15){
-                CustomPerson(Name:"You")
-                CustomPerson(Name:"Friend 1")
-                CustomPerson(Name:"Friend 2")
-            }
-            Spacer()
-            CustomButton(text: "Split Now").frame(height:50)
+            .frame( maxHeight: .infinity, alignment: .topLeading)
+            
         }
-        .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .topLeading)
-        .padding(.horizontal)
+        .navigationBarBackButtonHidden(true)
     }
 }
             
 #Preview {
     AddExpenseView()
+        .environment(AddExpenseViewVM())
 }

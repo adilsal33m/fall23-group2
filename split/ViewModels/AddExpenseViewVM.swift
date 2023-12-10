@@ -9,15 +9,17 @@ import Foundation
 import Firebase
 import FirebaseFirestore
 import Combine
+import SwiftData
 
+@Observable
 class AddExpenseViewVM: ObservableObject{
-    @Published var BillDesc = ""
-    @Published var totalString = ""
-    @Published var Total = 0.0
+    var BillDesc = ""
+    var totalString = ""
+    var Total = 0.0
     
     var db = Firestore.firestore()
     
-    @Published var users:[User] = []
+    var users:[User] = []
     
     func fetchUsers(){
         db.collection("Users").getDocuments{snapshot, error in
