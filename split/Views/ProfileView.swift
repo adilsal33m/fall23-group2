@@ -6,11 +6,16 @@
 //
 
 import SwiftUI
+import Firebase
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 struct CustomProfileFriendCard:View {
     @State var buttonText: String
     @State var money:String
     @State var status:String
+    @State var name: String
+    @State var expenseName: String
     var body: some View {
         ZStack{
             RoundedRectangle(cornerRadius: 15.0)
@@ -24,9 +29,9 @@ struct CustomProfileFriendCard:View {
                 CustomPerson(Name: "")
                     .padding()
                 VStack{
-                    Text("Friends Name")
+                    Text(name)
                         .bold()
-                    Text("Expense Name")
+                    Text(expenseName)
                         .padding(.bottom,4)
                     ZStack{
                         RoundedRectangle(cornerRadius: 10)
@@ -35,7 +40,7 @@ struct CustomProfileFriendCard:View {
                             .shadow(color:.black, radius: 1,x:3, y:3)
                             .overlay(RoundedRectangle(cornerRadius: 10.0).stroke(.black, lineWidth: 2))
                         Text("\(buttonText)")
-
+                        
                     }
                 }
                 
@@ -46,15 +51,15 @@ struct CustomProfileFriendCard:View {
                         .foregroundColor(.gray)
                     Text("\(money)")
                         .foregroundColor(.black)
-
-
-                }
                     
-            .padding(.horizontal,20)
-
-        }
-        .onTapGesture {
-            
+                    
+                }
+                
+                .padding(.horizontal,20)
+                
+            }
+            .onTapGesture {
+                
             }
             
         }
@@ -62,6 +67,7 @@ struct CustomProfileFriendCard:View {
 }
 
 struct ProfileView: View {
+    @StateObject var viewModel = ProfileViewVM()
     var body: some View {
         NavigationView{
             VStack{
@@ -114,12 +120,47 @@ struct ProfileView: View {
                 .padding(Edge.Set .top, 10)
                 ScrollView{
                     VStack{
-                        CustomProfileFriendCard(buttonText: "Remind", money: "2000", status: "Owes you")
-                        CustomProfileFriendCard(buttonText: "Remind", money: "4000", status: "Owes you")
-                        CustomProfileFriendCard(buttonText: "Remind", money: "1000", status: "Owes you")
+                        
+                        
+                        
+                        
+                        ForEach(viewModel.expenseFriends , id: \.id){ expense in
+                            CustomProfileFriendCard(buttonText: "Remind", money: "\(expense.amount)", status: "Owes you", name: expense.name, expenseName: viewModel.expense?.name ?? " ")
+                        }
+                        
+                        
+                        
+                        
+                        //                        CustomProfileFriendCard(buttonText: "Remind", money: "2000", status: "Owes you")
+                        //                        CustomProfileFriendCard(buttonText: "Remind", money: "4000", status: "Owes you")
+                        //                        CustomProfileFriendCard(buttonText: "Remind", money: "1000", status: "Owes you")
                         
                     }
                     .padding(.horizontal, 10)
+                }
+                .onAppear{
+                    viewModel.fetchEmails(email: Auth.auth().currentUser?.email ?? "") { success in
+                        if success {
+                            // The Firestore query has completed successfully
+                            viewModel.fetchOwesUsers {
+                                // Code to execute after fetching users who owe
+                                
+                                print(viewModel.usersYouOweEmails)
+                                print(viewModel.usersOweEmails)
+                                print(viewModel.usersYouOwe)
+                            }
+                            
+                        } else {
+                            // Handle the case where the query was not successful
+                            print("Failed to fetch user data")
+                        }
+                    }
+                    viewModel.fetchExpense(email: Auth.auth().currentUser?.email ?? ""){expense in
+                        print("there we")
+                        print(viewModel.expense)
+                        print(viewModel.expenseFriends)
+                        print(expense)
+                    }
                 }
                 HStack{
                     Text("You are owed")
@@ -132,19 +173,41 @@ struct ProfileView: View {
                 
                 ScrollView{
                     VStack{
-                        CustomProfileFriendCard(buttonText: "Settle", money: "1000", status: "you are owed")
-                            .padding(Edge.Set .top, 10)
-                        CustomProfileFriendCard(buttonText: "Settle", money: "1000", status: "you are owed")
-                            .padding(Edge.Set .top, 10)
+                        
+                        ForEach(viewModel.expensesYouOwe , id: \.createdBy){ expense in
+                            CustomProfileFriendCard(buttonText: "Settle", money: "\(expense.friends[0].amount)", status: "you Owe", name: expense.createdBy, expenseName: viewModel.expense?.name ?? " ")
+                        }
+                        
+                        //                        CustomProfileFriendCard(buttonText: "Settle", money: "1000", status: "you are owed", name: "", expenseName: "")
+                        //                            .padding(Edge.Set .top, 10)
                         
                     }
                     .padding(.horizontal,10)
+                }
+                .onAppear{
+                    viewModel.fetchEmails(email: Auth.auth().currentUser?.email ?? "") { success in
+                        if success {
+                            // The Firestore query has completed successfully
+                            viewModel.fetchUserYouOwe {
+                                // Code to execute after fetching users who owe
+                                
+                                print("Expense Data: \(viewModel.expensesYouOwe)")
+                                //                                print(viewModel.usersOweEmails)
+                                //                                print(viewModel.usersYouOwe)
+                            }
+                            
+                        } else {
+                            // Handle the case where the query was not successful
+                            print("Failed to expense user data")
+                        }
+                    }
                 }
                 
                 
             }
             .padding()
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
