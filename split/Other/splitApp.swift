@@ -7,10 +7,13 @@
 
 import SwiftUI
 import Firebase
+import Combine
 
 @main
 struct splitApp: App {
-    
+    @StateObject var viewModel = AddParticipantViewVM()
+    @StateObject var SplitViewModel = SplitBillViewVM()
+    @StateObject var ExpenseViewModel = AddExpenseViewVM()
     init() {
             FirebaseApp.configure()
         }
@@ -19,6 +22,9 @@ struct splitApp: App {
     var body: some Scene {
         WindowGroup {
             MainView()
+                .environmentObject(viewModel)
+                .environment(SplitViewModel)
+                .environment(ExpenseViewModel)
         }
     }
 }

@@ -14,6 +14,7 @@ class RegisterViewVM: ObservableObject{
     @Published var name = ""
     @Published var email = ""
     @Published var password = ""
+//    @Published var id = ""
     let db = Firestore.firestore()
     
         
@@ -46,7 +47,7 @@ class RegisterViewVM: ObservableObject{
         let user = User(id: UUID(), email: email, name: name)
 
         do {
-            _ = try db.collection("Users").document(user.id.uuidString).setData(from: user)
+            _ = try db.collection("Users").document(email).setData(from: user)
         } catch let error {
             print("Error writing user to Firestore: \(error)")
         }

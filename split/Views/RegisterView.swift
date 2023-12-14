@@ -6,6 +6,9 @@
 //
 
 import SwiftUI
+import Firebase
+import FirebaseFirestore
+import FirebaseFirestoreSwift
 
 struct RegisterView: View {
     @State private var showHomeScreen = false
@@ -48,7 +51,12 @@ struct RegisterView: View {
                             viewModel.register{success in
                             if success {
                                 print("Registration successful")
-                                viewModel.addUser()
+                                if let currentUserID = Auth.auth().currentUser?.uid{
+                                    print(currentUserID)
+//                                    viewModel.$id = currentUserID
+                                    viewModel.addUser()
+                                }
+//                                viewModel.addUser()
                                 self.showHomeScreen = true
                                 
                                 }

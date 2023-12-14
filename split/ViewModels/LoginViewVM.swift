@@ -49,7 +49,7 @@ class LoginViewVM: ObservableObject {
         
     }
     
-    func login(){
+    func login(completion: @escaping (Bool) -> Void){
         guard validate() else {
             return
         }
@@ -58,11 +58,13 @@ class LoginViewVM: ObservableObject {
             if error != nil {
                 print("some eerero")
 //                print(error!.localizedDescription)
+                completion(false)
             }
             
             if (result != nil) {
                 print("useer logged in")
                 print(result?.user.email ?? "USER LOGGED IN")
+                completion(true)
             }
         }
         

@@ -8,6 +8,9 @@
 import Foundation
 
 struct Friends: Codable{
-    var id: String
+    var id: UUID
+    var email: String
     var amount: Int
+    var name:String
+//    var name: String
 }

@@ -52,7 +52,7 @@ struct CustomButton: View {
 
 struct LoginView: View {
     @StateObject var viewModel = LoginViewVM()
-    
+    @State private var showHomeScreen = false
     
 //    init() {
 //        for family in UIFont.familyNames{
@@ -64,50 +64,59 @@ struct LoginView: View {
 //    }
 //    
     var body: some View {
-        VStack{
-            Spacer()
-            Text("SPLIT")
-                .font(.custom("PressStart2P-Regular", size: 50))
-                .shadow(color: .black, radius: 2, x: 2,y:3)
-            Spacer()
-//            Spacer().frame(height: 50)
-            CustomTextField(textController: $viewModel.email, text: "Email")
-                .frame(width: UIScreen.main.bounds.width/1.15, height: UIScreen.main.bounds.height/17)
-            Spacer().frame(height:20)
-            CustomTextField(textController: $viewModel.password, text: "Password")
-                .frame(width: UIScreen.main.bounds.width/1.15, height: UIScreen.main.bounds.height/17)
-            Spacer().frame(height:30)
-
-            GoogleSignInButton(viewModel: GoogleSignInButtonViewModel(scheme: .light, style: .icon, state: .normal), action:{
-                Task{
-                    try await viewModel.signInGoogle()
-                }
-            })
-            .cornerRadius(6)
-            .shadow(color: Color.black.opacity(1), radius: 0, x: 3, y: 3)
-            Spacer().frame(height:30)
-            CustomButton(text: "Login")
-                .frame(width: 95.0, height: 30)
-                .onTapGesture {
-                    viewModel.login()
-                    print("Login Button Tapped")
+        NavigationView{
+            VStack{
+                Spacer()
+                Text("SPLIT")
+                    .font(.custom("PressStart2P-Regular", size: 50))
+                    .shadow(color: .black, radius: 2, x: 2,y:3)
+                Spacer()
+                //            Spacer().frame(height: 50)
+                CustomTextField(textController: $viewModel.email, text: "Email")
+                    .frame(width: UIScreen.main.bounds.width/1.15, height: UIScreen.main.bounds.height/17)
+                Spacer().frame(height:20)
+                CustomTextField(textController: $viewModel.password, text: "Password")
+                    .frame(width: UIScreen.main.bounds.width/1.15, height: UIScreen.main.bounds.height/17)
+                Spacer().frame(height:30)
                 
-                }
-            
-            Spacer()
-            
-            NavigationLink(destination: RegisterView(), label: {
+                GoogleSignInButton(viewModel: GoogleSignInButtonViewModel(scheme: .light, style: .icon, state: .normal), action:{
+                    Task{
+                        try await viewModel.signInGoogle()
+                    }
+                })
                 
-                Text("Create Your Account")
-                    .padding(.all, 30)
-                    .bold()
-                    .font(.system(size: 20))
-                    .shadow(color: .black, radius: 1, x: 1,y: 1)
+                NavigationLink(destination: HomeView(), isActive: $showHomeScreen, label: {EmptyView()})
+                
+                .cornerRadius(6)
+                .shadow(color: Color.black.opacity(1), radius: 0, x: 3, y: 3)
+                Spacer().frame(height:30)
+                CustomButton(text: "Login")
+                    .frame(width: 95.0, height: 30)
+                    .onTapGesture {
+                        viewModel.login(){success in
+                            if (success) {
+                                showHomeScreen = true
+                            }
+                        }
+                        print("Login Button Tapped")
+                        
+                    }
+                
+                Spacer()
+                
+                NavigationLink(destination: RegisterView(), label: {
                     
-            })
-            .foregroundColor(.black)
+                    Text("Create Your Account")
+                        .padding(.all, 30)
+                        .bold()
+                        .font(.system(size: 20))
+                        .shadow(color: .black, radius: 1, x: 1,y: 1)
+                    
+                })
+                .foregroundColor(.black)
+            }
+            .navigationBarBackButtonHidden(true)
         }
-        .navigationBarBackButtonHidden(true)
     }
 }
 

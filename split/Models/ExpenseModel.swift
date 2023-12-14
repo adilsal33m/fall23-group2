@@ -7,18 +7,19 @@
 
 import Foundation
 
-struct Expense: Identifiable, Codable {
-    var id: UUID
+struct Expense: Codable {
     var createdBy: String
     var name: String
+    var totalBill:Int
     var friends: [Friends]
     // Add more properties as needed
 
     enum CodingKeys: String, CodingKey {
-        case id
         case createdBy
         case name
+        case totalBill
         case friends
         // Add more cases as needed
     }
 }
+
