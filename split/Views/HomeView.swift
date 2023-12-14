@@ -10,6 +10,10 @@ import SwiftUI
 import Firebase
 import FirebaseAuth
 
+import SwiftUI
+import Firebase
+import FirebaseAuth
+
 struct NavigationCard: View {
     var text: String
     var imageIcon: String
@@ -26,7 +30,7 @@ struct NavigationCard: View {
                 HStack(alignment: .center){
                     Spacer()
                     Text(text)
-                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                        .fontWeight(.bold)
                         .font(.system(size: 25))
                     Spacer()
                     Image(imageIcon).resizable().scaledToFit().frame(height:100)

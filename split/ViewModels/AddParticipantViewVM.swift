@@ -9,6 +9,7 @@ import Foundation
 import Firebase
 import FirebaseFirestore
 import Combine
+<<<<<<< HEAD
 import SwiftData
 
 @Observable
@@ -18,6 +19,15 @@ class AddParticipantViewVM: ObservableObject{
     var db = Firestore.firestore()
     
     var users:[User] = []
+=======
+
+class AddParticipantViewVM: ObservableObject{
+    @Published var search = ""
+    
+    var db = Firestore.firestore()
+    
+    @Published var users:[User] = []
+>>>>>>> project-updates
     
     func fetchUsers(){
         db.collection("Users").getDocuments{snapshot, error in
@@ -32,6 +42,7 @@ class AddParticipantViewVM: ObservableObject{
             
         }
     }
+<<<<<<< HEAD
     
     func addUserToSelection(user: User) {
         // Check if the user is not already in the selection
@@ -43,4 +54,6 @@ class AddParticipantViewVM: ObservableObject{
     func printU(){
         print(selectedParticipants)
     }
+=======
+>>>>>>> project-updates
 }
